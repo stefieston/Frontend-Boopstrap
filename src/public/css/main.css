@@ -1,8 +1,14 @@
-/* Font */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Protest+Guerrilla&display=swap');
 
-body {
-    font-family: "Montserrat", sans-serif !important;
+p, a, li, span {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Protest Guerrilla", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
