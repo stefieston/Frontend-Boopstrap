@@ -1,11 +1,9 @@
-import * as validations from "/js/helpers/inputsValidations.js";
+import * as validations from "/js/helpers/utils.js";
 
-
-const form = document.getElementById('registerForm');
+const registerForm = document.getElementById('registerForm');
 const passwordinput = document.getElementById('password');
 
-async function initForm (event) {
-    console.log("iniciando validaciones");
+async function initRegisterForm (event) {
     event.preventDefault();
     
     validations.clearErrors();
@@ -22,34 +20,37 @@ async function initForm (event) {
     let isValid = true;
 
     if (!validations.validateFullName(fullName)) {
-        validations.showError('fullNameError', 'El nombre completo no debe contener caracteres especiales no permitidos.');
-        alert("El nombre completo no debe contener caracteres especiales no permitidos");
+        validations.showError('fullNameError', 'The full name must not contain special characters.');
         isValid = false;
     }
 
     if (!validations.validateDocumentNumber(documentNumber)) {
-        validations.showError('documentNumberError', 'El número de documento debe ser estrictamente un número.');
-        alert("El número de documento debe ser estrictamente un número");
+        validations.showError('documentNumberError', 'The document number must be strictly a number.');
         isValid = false;
     }
 
     if (!validations.validateEmail(email)) {
-        validations.showError('emailError', 'Ingrese un correo electrónico válido.');
+        validations.showError('emailError', 'Please enter a valid email address.');
         isValid = false;
     }
 
     if (!validations.validatePhone(phone)) {
-        validations.showError('phoneError', 'Ingrese un número de teléfono válido.');
+        validations.showError('phoneError', 'Please enter a valid email address.');
+        isValid = false;
+    }
+
+    if (!validations.validateDocumentType(documentType)) {
+        validations.showError('documentTypeError', 'Please select a document type.');
         isValid = false;
     }
 
     if (!validations.validateUsername(username)) {
-        validations.showError('usernameError', 'El nombre de usuario no debe contener caracteres especiales.');
+        validations.showError('usernameError', 'The username must not contain special characters.');
         isValid = false;
     }
 
     if (!validations.validatePassword(password)) {
-        validations.showError('passwordError', 'La contraseña debe tener al menos 8 caracteres, incluyendo una mayúscula, un número y un carácter especial permitido.');
+        validations.showError('passwordError', 'The password must be at least 8 characters, including one uppercase character, one number, and one allowed special character.');
         isValid = false;
     }
 
@@ -58,7 +59,6 @@ async function initForm (event) {
         isValid = false;
     }
 
-    
     if (isValid) {
         try {
             const response = await fetch('/register', {
@@ -78,22 +78,21 @@ async function initForm (event) {
             });
 
             if (response.ok) {
-                alert('Registro completado.');
-                document.getElementById('registrationForm').reset();
+                alert('Registration completed.');
+                registerForm.reset();
             } else {
                 const result = await response.json();
                 alert(result.error);
             }
         } catch (error) {
             console.log('Error:', error);
-            alert('Ocurrió un error al registrar el usuario.');
+            alert('An error occurred while registering the user.');
         }
     }
 }
 
-
-if (form) {
-    form.addEventListener('submit', initForm);
+if (registerForm) {
+    registerForm.addEventListener('submit', initRegisterForm);
 }
 
 if (passwordinput) {

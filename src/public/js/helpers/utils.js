@@ -26,6 +26,10 @@ export function clearErrors() {
     });
 }
 
+export function validateDocumentType(documentType) {
+    return documentType !== 'default';
+}
+
 export function showError(elementId, message) {
     document.getElementById(elementId).innerText = message;
 }

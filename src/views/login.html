@@ -37,18 +37,18 @@
     <h1>Login</h1>
   </div>
 
-  <div class="container col-md-6 text-center bg-primary p-4 rounded">
-    <form action="/register">
+  <div class="container col-md-6  bg-primary p-4 rounded">
+    <form id="loginForm" action="/register">
       <div class="mb-3">
-        <label for="email" class="form-label text-light">Email</label>
-        <input type="email" class="form-control" id="email">
+        <label for="userName" class="form-label text-light">UserName</label>
+        <input type="text" class="form-control" id="userName">
       </div>
       <div class="mb-3">
         <label for="password" class="form-label text-light">Password</label>
         <input type="password" class="form-control" id="password">
       </div>
 
-      <button type="submit" class="btn bg-light fw-bold w-25">Register</button>
+      <button type="submit" class="btn bg-light fw-bold w-25 m-auto">Submit</button>
     </form>
   </div>
 
@@ -61,7 +61,7 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 
-  <script src="/js/login.js"></script>
+  <script type="module" src="/js/login.js"></script>
 </body>
 
 </html>
