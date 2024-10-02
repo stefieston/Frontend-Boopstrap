@@ -39,48 +39,71 @@
     </div>
 
 
-    <div class="container col-md-6 bg-primary p-4 rounded mb-5">
-        <form action="/catalog">
+    <div class="container col-md-8 bg-primary p-4 rounded mb-5">
+        <form id="registerForm" action="/login">
 
             <div class="row gx-3 mb-2">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="name" class="form-label text-light">Name</label>
-                        <input type="text" class="form-control" id="name">
+                        <label for="fullName" class="form-label text-light">Full name</label>
+                        <input type="text" class="form-control" id="fullName">
+                        <div class="error-message" id="fullNameError"></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="email" class="form-label text-light">Email</label>
                         <input type="email" class="form-control" id="email">
+                        <div class="error-message" id="emailError"></div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="cedula" class="form-label text-light">Cédula</label>
-                        <input type="text" class="form-control" id="cedula">
+                        <label for="documentType" class="form-label text-light">Document type</label>
+                        <select class="form-select" id="documentType" aria-label="Default select example">
+                            <option selected>Select document</option>
+                            <option value="CC">CC</option>
+                            <option value="DNI">DNI</option>
+                            <option value="Passport">Passport</option>
+                        </select>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label text-light">Password</label>
+                        <input type="password" class="form-control" id="password">
+                        <div class="error-message" id="passwordError"></div>
                     </div>
                 </div>
 
                 <div class="col-md-6">
 
                     <div class="mb-3">
-                        <label for="lastname" class="form-label text-light">Last name</label>
-                        <input type="text" class="form-control" id="lastname">
+                        <label for="phone" class="form-label text-light">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone">
+                        <div class="error-message" id="phoneError"></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="userName" class="form-label text-light">User Name</label>
-                        <input type="text" class="form-control" id="userName">
+                        <input type="text" class="form-control" id="userName" name="userName">
+                        <div class="error-message" id="usernameError"></div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="password" class="form-label text-light">Password</label>
-                        <input type="password" class="form-control" id="password">
+                        <label for="documentNumber" class="form-label text-light">Document number</label>
+                        <input type="text" class="form-control" id="documentNumber">
+                        <div class="error-message" id="documentNumberError"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label text-light">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmPassword">
+                        <div class="error-message" id="confirmPasswordError"></div>
                     </div>
                 </div>
             </div>
 
             <div class="text-center">
-                <button type="submit" class="btn bg-light fw-bold w-50">Catalog</button>
+                <button type="submit" class="btn bg-light fw-bold w-50">Submit</button>
             </div>
         </form>
     </div>
@@ -89,6 +112,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
+
+    <script type="module" src="/js/register.js"></script>
 </body>
 
 </html>
