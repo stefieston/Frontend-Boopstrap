@@ -10,8 +10,11 @@ router.use(express.static( '../public'));
 
 // Home route
 router.get('/', loginController.getLoginPage);
+router.post('/login', loginController.login);
+
+router.get('/register', registerController.getRegisterPage);
+router.post('/register', registerController.register);
 
 router.get('/catalog', catalogController.getCatalogPage);
-router.get('/register', registerController.getRegisterPage);
 
 module.exports = router;

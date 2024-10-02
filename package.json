@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/stefieston/Frontend-Boopstrap#readme",
   "devDependencies": {
-    "express": "^4.20.0"
+    "express": "^4.20.0",
+    "mysql2": "^3.11.3"
   }
 }
