@@ -1,7 +1,5 @@
 const path = require('path');
-
 const UserService = require('../services/userService');
-
 
 class LoginController {
     getLoginPage = (req, res) => {
