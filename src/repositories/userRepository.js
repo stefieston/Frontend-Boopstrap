@@ -8,7 +8,8 @@ const pool = mysql.createPool({
     database: 'ecommerce',
     waitForConnections: true,
     connectionLimit: 10,
-    queueLimit: 0
+    queueLimit: 0,
+    port: 8809
 });
 
 const promisePool = pool.promise();

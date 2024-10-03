@@ -4,7 +4,6 @@ class UserService {
 	async registerUser(userData) {
 		const { documentNumber, username } = userData;
 
-
 		const existingUserByDocument = await UserRepository.findByDocumentNumber(
 			documentNumber
 		);
