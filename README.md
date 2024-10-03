@@ -26,7 +26,7 @@ This project provides a basic template for building a frontend application using
 To get started, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/frontend-bootstrap-project.git
+git clone https://github.com/stefieston/Frontend-Boopstrap.git
 ```
 
 Navigate to the project directory:
