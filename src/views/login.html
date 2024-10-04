@@ -36,15 +36,16 @@
 		<h1>Login</h1>
 	</div>
 
-	<div class="container col-md-6  bg-primary p-4 rounded">
-		<form id="loginForm">
-			<div class=" mb-3">
+	<div class="container col-md-6  bg-primary p-4 rounded-2">
+		<form id="loginForm" class="needs-validation">
+			<div class="mb-3">
 				<label for="userName" class="form-label text-light">UserName</label>
-				<input type="text" class="form-control" id="userName" name="userName">
+				<input type="text" class="form-control" id="userName" name="userName" required>
+				<div class="valid-feedback">Looks good!</div>
 			</div>
 			<div class="mb-3">
 				<label for="password" class="form-label text-light">Password</label>
-				<input type="password" class="form-control" id="password" name="password">
+				<input type="password" class="form-control" id="password" name="password" required>
 			</div>
 
 			<button type="submit" class="btn bg-light fw-bold w-25 m-auto">Submit</button>

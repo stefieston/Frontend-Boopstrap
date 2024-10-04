@@ -48,19 +48,19 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="fullName" class="form-label text-light">Full name</label>
-                        <input type="text" class="form-control" id="fullName" name="fullName">
+                        <input type="text" class="form-control" id="fullName" name="fullName" required>
                         <div class="error-message" id="fullNameError"></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="email" class="form-label text-light">Email</label>
-                        <input type="email" class="form-control" id="email" name="email">
+                        <input type="email" class="form-control" id="email" name="email" required>
                         <div class="error-message" id="emailError"></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="documentType" class="form-label text-light">Document type</label>
-                        <select class="form-select" id="documentType" name="documentType">
+                        <select class="form-select" id="documentType" name="documentType" required>
                             <option value="default" selected>Select document</option>
                             <option value="CC">CC</option>
                             <option value="DNI">DNI</option>
@@ -72,7 +72,7 @@
 
                     <div class="mb-3">
                         <label for="password" class="form-label text-light">Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
+                        <input type="password" class="form-control" id="password" name="password" required>
                         <div class="password-strength" id="passwordStrength"></div>
                         <div class="error-message" id="passwordError"></div>
                     </div>
@@ -82,25 +82,26 @@
 
                     <div class="mb-3">
                         <label for="phone" class="form-label text-light">Phone</label>
-                        <input type="text" class="form-control" id="phone" name="phone">
+                        <input type="text" class="form-control" id="phone" name="phone" required>
                         <div class="error-message" id="phoneError"></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="userName" class="form-label text-light">User Name</label>
-                        <input type="text" class="form-control" id="userName" name="userName">
+                        <input type="text" class="form-control" id="userName" name="userName" required>
                         <div class="error-message" id="usernameError"></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="documentNumber" class="form-label text-light">Document number</label>
-                        <input type="text" class="form-control" id="documentNumber" name="documentNumber">
+                        <input type="text" class="form-control" id="documentNumber" name="documentNumber" required>
                         <div class="error-message" id="documentNumberError"></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="confirmPassword" class="form-label text-light">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                            required>
                         <div class="error-message" id="confirmPasswordError"></div>
                     </div>
                 </div>
