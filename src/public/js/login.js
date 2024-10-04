@@ -4,11 +4,9 @@ const loginForm = document.getElementById("loginForm");
 
 async function initLoginForm(event) {
     event.preventDefault();
-
     clearErrors();
 
-    let username = document.getElementById("userName").value ?? "";
-    let password = document.getElementById("password").value ?? "";
+    let formData = Object.fromEntries(new FormData(event.target));
 
     try {
         const response = await fetch("/login", {
@@ -16,10 +14,7 @@ async function initLoginForm(event) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                username: username,
-                password: password,
-            }),
+            body: JSON.stringify(formData),
         });
 
         if (response.ok) {

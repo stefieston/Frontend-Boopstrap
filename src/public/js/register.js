@@ -8,18 +8,11 @@ async function initRegisterForm(event) {
 
     validations.clearErrors();
 
-    let fullName = document.getElementById("fullName").value;
-    let documentType = document.getElementById("documentType").value; // Agregado: obtener documentType
-    let documentNumber = document.getElementById("documentNumber").value;
-    let email = document.getElementById("email").value;
-    let phone = document.getElementById("phone").value;
-    let username = document.getElementById("userName").value;
-    let password = document.getElementById("password").value;
-    let confirmPassword = document.getElementById("confirmPassword").value;
+    const data = Object.fromEntries(new FormData(event.target));
 
     let isValid = true;
 
-    if (!validations.validateFullName(fullName)) {
+    if (!validations.validateFullName(data.fullName)) {
         validations.showError(
             "fullNameError",
             "The full name must not contain special characters."
@@ -27,7 +20,7 @@ async function initRegisterForm(event) {
         isValid = false;
     }
 
-    if (!validations.validateDocumentNumber(documentNumber)) {
+    if (!validations.validateDocumentNumber(data.documentNumber)) {
         validations.showError(
             "documentNumberError",
             "The document number must be strictly a number."
@@ -35,17 +28,17 @@ async function initRegisterForm(event) {
         isValid = false;
     }
 
-    if (!validations.validateEmail(email)) {
+    if (!validations.validateEmail(data.email)) {
         validations.showError("emailError", "Please enter a valid email address.");
         isValid = false;
     }
 
-    if (!validations.validatePhone(phone)) {
-        validations.showError("phoneError", "Please enter a valid email address.");
+    if (!validations.validatePhone(data.phone)) {
+        validations.showError("phoneError", "Please enter a valid phone.");
         isValid = false;
     }
 
-    if (!validations.validateDocumentType(documentType)) {
+    if (!validations.validateDocumentType(data.documentType)) {
         validations.showError(
             "documentTypeError",
             "Please select a document type."
@@ -53,7 +46,7 @@ async function initRegisterForm(event) {
         isValid = false;
     }
 
-    if (!validations.validateUsername(username)) {
+    if (!validations.validateUsername(data.userName)) {
         validations.showError(
             "usernameError",
             "The username must not contain special characters."
@@ -61,7 +54,7 @@ async function initRegisterForm(event) {
         isValid = false;
     }
 
-    if (!validations.validatePassword(password)) {
+    if (!validations.validatePassword(data.password)) {
         validations.showError(
             "passwordError",
             "The password must be at least 8 characters, including one uppercase character, one number, and one allowed special character."
@@ -69,7 +62,7 @@ async function initRegisterForm(event) {
         isValid = false;
     }
 
-    if (password !== confirmPassword) {
+    if (data.password !== data.confirmPassword) {
         validations.showError(
             "confirmPasswordError",
             "Las contraseñas no coinciden."
@@ -78,26 +71,22 @@ async function initRegisterForm(event) {
     }
 
     if (isValid) {
+        console.log(JSON.stringify(data));
+
+
         try {
             const response = await fetch("/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    fullName: fullName,
-                    documentType: documentType,
-                    documentNumber: documentNumber,
-                    email: email,
-                    phone: phone,
-                    username: username,
-                    password: password,
-                }),
+                body: JSON.stringify(data),
             });
 
             if (response.ok) {
                 alert("Registration completed.");
                 registerForm.reset();
+                window.location.href = "/";
             } else {
                 const result = await response.json();
                 alert(result.error);

@@ -2,7 +2,7 @@ const UserRepository = require("../repositories/userRepository");
 
 class UserService {
 	async registerUser(userData) {
-		const { documentNumber, username } = userData;
+		const { documentNumber, userName } = userData;
 
 		const existingUserByDocument = await UserRepository.findByDocumentNumber(
 			documentNumber
@@ -13,27 +13,28 @@ class UserService {
 			);
 		}
 
-		const existingUserByUsername = await UserRepository.findByUsername(
-			username
+		const existingUserByUserName = await UserRepository.findByUserName(
+			userName
 		);
-		if (existingUserByUsername) {
-			throw new Error("The username " + username + " is already taken.");
+		if (existingUserByUserName) {
+			throw new Error("The username " + userName + " is already taken.");
 		}
 
 		return UserRepository.createUser(userData);
 	}
 
 	async loginUser(userData) {
-		const { password, username } = userData;
-		const existingUserByUsername = await UserRepository.findByUsername(
-			username
+		const { password, userName } = userData;
+		const existingUserByUserName = await UserRepository.findByUserName(
+			userName
 		);
 
-		if (
-			existingUserByUsername == null ||
-			existingUserByUsername.password !== password
-		) {
-			throw new Error("error en usuario usuario o contraseña.");
+		if (existingUserByUserName == null) {
+			throw new Error("Error the username does not exist.");
+		}
+
+		if (existingUserByUserName.password !== password) {
+			throw new Error("The password is incorrect.");
 		}
 	}
 }

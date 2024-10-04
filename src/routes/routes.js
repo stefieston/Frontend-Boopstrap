@@ -4,9 +4,11 @@ const registerController = require('../controllers/registerController');
 const loginController = require('../controllers/loginController')
 const catalogController = require('../controllers/catalogController');
 
-
 // Static files
-router.use(express.static( '../public'));
+router.use(express.static('../public'));
+
+// Middleware para parsear JSON
+router.use(express.json());
 
 // Home route
 router.get('/', loginController.getLoginPage);

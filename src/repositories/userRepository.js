@@ -4,12 +4,11 @@ const mysql = require('mysql2');
 const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: '', // Password can be root if you are using XAMPP
     database: 'ecommerce',
     waitForConnections: true,
     connectionLimit: 10,
-    queueLimit: 0,
-    port: 8809
+    queueLimit: 0
 });
 
 const promisePool = pool.promise();
@@ -22,18 +21,18 @@ class UserRepository {
         return rows.length > 0 ? rows[0] : null;
     }
 
-    async findByUsername(username) {
-        const [rows] = await promisePool.query('SELECT * FROM users WHERE username = ?', [username]);
+    async findByUserName(userName) {
+        const [rows] = await promisePool.query('SELECT * FROM users WHERE username = ?', [userName]);
         return rows.length > 0 ? rows[0] : null;
     }
 
     async createUser(user) {
-        const { fullName, documentType, documentNumber, email, phone, username, password } = user;
+        const { fullName, documentType, documentNumber, email, phone, userName, password } = user;
         try {
             const [result] = await promisePool.query(
                 `INSERT INTO users (fullName, documentType, documentNumber, email, phone, username, password) 
                 VALUES (?, ?, ?, ?, ?, ?, ?)`,
-                [fullName, documentType, documentNumber, email, phone, username, password]
+                [fullName, documentType, documentNumber, email, phone, userName, password]
             );
             return { id: result.insertId, ...user };
         } catch (err) {
